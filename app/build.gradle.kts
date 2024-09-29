@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.fetchtask"
+    namespace = "com.example.SWEFinalProject"
     compileSdk = 34
 
 
     defaultConfig {
-        applicationId = "com.example.fetchtask"
+        applicationId = "com.example.SWEFinalProject"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

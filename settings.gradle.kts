@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FetchTask"
+rootProject.name = "SWEFinalProject"
 include(":app")
