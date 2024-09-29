@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FetchTask</string>
+    <string name="name">Name %1$s</string>
+    <string name="id">Id %1$s</string>
+    <string name="list_id">List Id: %1$s</string>
+    <string name="retry">Retry</string>
+    <string name="something_went_wrong">Something went wrong, %1$s</string>
+</resources>
