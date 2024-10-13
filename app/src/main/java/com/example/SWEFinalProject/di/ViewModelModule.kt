@@ -36,7 +36,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideHiringAPI(httpClient: OkHttpClient): HiringAPI {
+    fun provideCarAPI(httpClient: OkHttpClient): HiringAPI {
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BaseUrl)

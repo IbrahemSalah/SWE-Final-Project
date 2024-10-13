@@ -15,9 +15,9 @@ class RepositoryImpl @Inject constructor(
 ) : Repository {
 
 
-    override fun fetchHiringList() = flow {
+    override fun signIn(username: String, password: String) = flow {
 
-        val result = remoteDataSource.fetchHiringList()
+        val result = remoteDataSource.signIn(username, password)
 
         if (result.isSuccessful && result.body() != null) {
             emit(result.body()!!)
@@ -26,4 +26,14 @@ class RepositoryImpl @Inject constructor(
         }
     }.flowOn(ioDispatcher)
 
+    override fun signUp(username: String, password: String) = flow {
+
+        val result = remoteDataSource.signUp(username, password)
+
+        if (result.isSuccessful && result.body() != null) {
+            emit(result.body()!!)
+        } else {
+            throw APIException(result.message(), result.code())
+        }
+    }.flowOn(ioDispatcher)
 }
