@@ -1,7 +1,5 @@
 package com.example.SWEFinalProject.ui.screens.hiringlist
 
-import com.example.SWEFinalProject.data.model.HiringItem
-import com.example.SWEFinalProject.data.repository.Repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

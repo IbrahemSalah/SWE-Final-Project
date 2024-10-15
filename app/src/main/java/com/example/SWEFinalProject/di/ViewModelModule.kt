@@ -1,7 +1,7 @@
 package com.example.SWEFinalProject.di
 
 import com.example.SWEFinalProject.BuildConfig
-import com.example.SWEFinalProject.data.remote.HiringAPI
+import com.example.SWEFinalProject.data.remote.CarApiService
 import com.example.SWEFinalProject.data.remote.RemoteDataSource
 import com.example.SWEFinalProject.data.remote.RemoteDataSourceImpl
 import com.example.SWEFinalProject.data.repository.Repository
@@ -36,20 +36,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCarAPI(httpClient: OkHttpClient): HiringAPI {
+    fun provideCarAPI(httpClient: OkHttpClient): CarApiService {
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BaseUrl)
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(HiringAPI::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideRemoteDataSource(remoteAPI: HiringAPI): RemoteDataSource {
-        return RemoteDataSourceImpl(remoteAPI)
+            .create(CarApiService::class.java)
     }
 
     @Provides
@@ -59,5 +53,13 @@ object AppModule {
         remoteDataSource: RemoteDataSource
     ): Repository {
         return RepositoryImpl(remoteDataSource, ioDispatcher)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(
+        carApiService: CarApiService
+    ): RemoteDataSource {
+        return RemoteDataSourceImpl(carApiService)
     }
 }

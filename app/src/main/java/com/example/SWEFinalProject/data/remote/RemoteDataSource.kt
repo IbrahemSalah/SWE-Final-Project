@@ -1,7 +1,6 @@
 package com.example.SWEFinalProject.data.remote
 
-import com.example.SWEFinalProject.data.model.HiringItem
-import kotlinx.coroutines.flow.Flow
+
 import retrofit2.Response
 
 interface RemoteDataSource {

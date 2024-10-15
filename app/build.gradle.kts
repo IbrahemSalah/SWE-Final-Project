@@ -6,6 +6,8 @@ plugins {
     id("kotlin-parcelize")
 }
 
+
+
 android {
     namespace = "com.example.SWEFinalProject"
     compileSdk = 34
@@ -52,7 +54,7 @@ android {
         viewBinding = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.7"
     }
     packaging {
         resources {
@@ -79,6 +81,9 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    implementation("io.coil-kt:coil-compose:1.3.2")
+
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -100,9 +105,9 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
 
     //dagger-hilt
-    implementation ("com.google.dagger:hilt-android:2.50")
+    implementation ("com.google.dagger:hilt-android:2.48")
     implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
-    kapt ("com.google.dagger:hilt-compiler:2.50")
+    kapt ("com.google.dagger:hilt-compiler:2.48")
 
     // Test
     testImplementation ("com.willowtreeapps.assertk:assertk:0.26.1")

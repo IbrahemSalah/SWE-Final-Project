@@ -2,8 +2,6 @@ package com.example.SWEFinalProject.ui.screens.hiringlist
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import com.example.SWEFinalProject.data.model.HiringItem
-import com.example.SWEFinalProject.data.repository.Repository
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
