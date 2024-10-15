@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">185.143.45.185</domain>
+        <domain includeSubdomains="true">cs425mui.s3.amazonaws.com</domain>
+    </domain-config>
+</network-security-config>

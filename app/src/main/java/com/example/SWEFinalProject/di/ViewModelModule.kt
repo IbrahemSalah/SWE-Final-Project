@@ -1,16 +1,11 @@
 package com.example.SWEFinalProject.di
 
 import com.example.SWEFinalProject.BuildConfig
-import com.example.SWEFinalProject.data.remote.HiringAPI
-import com.example.SWEFinalProject.data.remote.RemoteDataSource
-import com.example.SWEFinalProject.data.remote.RemoteDataSourceImpl
-import com.example.SWEFinalProject.data.repository.Repository
-import com.example.SWEFinalProject.data.repository.RepositoryImpl
+import com.example.SWEFinalProject.data.remote.CarApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -34,30 +29,41 @@ object AppModule {
             .build()
     }
 
+//    @Provides
+//    @Singleton
+//    fun provideHiringAPI(httpClient: OkHttpClient): HiringAPI {
+//
+//        return Retrofit.Builder()
+//            .baseUrl(BuildConfig.BaseUrl)
+//            .client(httpClient)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//            .create(HiringAPI::class.java)
+//    }
     @Provides
     @Singleton
-    fun provideHiringAPI(httpClient: OkHttpClient): HiringAPI {
+    fun provideCarAPI(httpClient: OkHttpClient): CarApiService {
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BaseUrl)
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(HiringAPI::class.java)
+            .create(CarApiService::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun provideRemoteDataSource(remoteAPI: HiringAPI): RemoteDataSource {
-        return RemoteDataSourceImpl(remoteAPI)
-    }
-
-    @Provides
-    @Singleton
-    fun provideRepository(
-        @Dispatcher(AppDispatchers.IO) ioDispatcher: CoroutineDispatcher,
-        remoteDataSource: RemoteDataSource
-    ): Repository {
-        return RepositoryImpl(remoteDataSource, ioDispatcher)
-    }
+//    @Provides
+//    @Singleton
+//    fun provideRemoteDataSource(remoteAPI: HiringAPI): RemoteDataSource {
+//        return RemoteDataSourceImpl(remoteAPI)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideRepository(
+//        @Dispatcher(AppDispatchers.IO) ioDispatcher: CoroutineDispatcher,
+//        remoteDataSource: RemoteDataSource
+//    ): Repository {
+//        return RepositoryImpl(remoteDataSource, ioDispatcher)
+//    }
 }

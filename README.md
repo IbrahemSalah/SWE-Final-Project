@@ -22,7 +22,7 @@ To get started with the project, follow these steps:
 
 2.  Open the project in Android Studio.
 
-3. Build and run the project on an Android emulator or device.
+3.  Build and run the project on an Android emulator or device.
 
 
 ## Libraries Used

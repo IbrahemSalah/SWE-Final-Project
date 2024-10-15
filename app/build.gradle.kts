@@ -6,11 +6,13 @@ plugins {
     id("kotlin-parcelize")
 }
 
+
+
 android {
     namespace = "com.example.SWEFinalProject"
     compileSdk = 34
 
-
+   
     defaultConfig {
         applicationId = "com.example.SWEFinalProject"
         minSdk = 24
@@ -24,7 +26,7 @@ android {
         }
 
 
-        buildConfigField("String", "BaseUrl", "\"https://fetch-hiring.s3.amazonaws.com/\"")
+        buildConfigField("String", "BaseUrl", "\"http://185.143.45.185:2024/\"")
     }
 
     buildFeatures {
@@ -51,7 +53,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.7"
     }
     packaging {
         resources {
@@ -72,6 +74,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("io.coil-kt:coil-compose:1.3.2")
+
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -92,9 +97,9 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
 
     //dagger-hilt
-    implementation ("com.google.dagger:hilt-android:2.50")
+    implementation ("com.google.dagger:hilt-android:2.48")
     implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
-    kapt ("com.google.dagger:hilt-compiler:2.50")
+    kapt ("com.google.dagger:hilt-compiler:2.48")
 
     // Test
     testImplementation ("com.willowtreeapps.assertk:assertk:0.26.1")
