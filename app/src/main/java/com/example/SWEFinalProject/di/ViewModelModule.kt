@@ -2,6 +2,10 @@ package com.example.SWEFinalProject.di
 
 import com.example.SWEFinalProject.BuildConfig
 import com.example.SWEFinalProject.data.remote.CarApiService
+import com.example.SWEFinalProject.data.remote.RemoteDataSource
+import com.example.SWEFinalProject.data.remote.RemoteDataSourceImpl
+import com.example.SWEFinalProject.data.repository.Repository
+import com.example.SWEFinalProject.data.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,5 +53,13 @@ object AppModule {
         remoteDataSource: RemoteDataSource
     ): Repository {
         return RepositoryImpl(remoteDataSource, ioDispatcher)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(
+        carApiService: CarApiService
+    ): RemoteDataSource {
+        return RemoteDataSourceImpl(carApiService)
     }
 }
