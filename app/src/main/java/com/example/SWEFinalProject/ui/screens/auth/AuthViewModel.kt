@@ -31,8 +31,6 @@ class AuthViewModel @Inject constructor(private val repository: Repository) : Vi
                 when (result) {
                     is Result.Error -> {
                         viewModelState.value = AuthUiState.Error(error = result.exception)
-                        //viewModelState.value = AuthUiState.Success
-
                     }
 
                     Result.Loading -> {

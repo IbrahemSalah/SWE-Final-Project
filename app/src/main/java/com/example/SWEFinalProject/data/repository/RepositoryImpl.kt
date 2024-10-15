@@ -19,10 +19,10 @@ class RepositoryImpl @Inject constructor(
 
         val result = remoteDataSource.signIn(username, password)
 
-        if (result.isSuccessful && result.body() != null) {
-            emit(result.body()!!)
+        if (result != null) {
+            emit(result)
         } else {
-            throw APIException(result.message(), result.code())
+            throw APIException("result.message()", 100)
         }
     }.flowOn(ioDispatcher)
 
@@ -30,10 +30,10 @@ class RepositoryImpl @Inject constructor(
 
         val result = remoteDataSource.signUp(username, password, phone, lname, fname)
 
-        if (result.isSuccessful && result.body() != null) {
-            emit(result.body()!!)
+        if ( result!= null) {
+            emit(result)
         } else {
-            throw APIException(result.message(), result.code())
+            throw APIException("result.message()", 100)
         }
     }.flowOn(ioDispatcher)
 }

@@ -2,10 +2,13 @@ package com.example.SWEFinalProject.data.remote
 
 import com.example.SWEFinalProject.data.model.Car
 import com.example.SWEFinalProject.data.model.CarResponse
+import com.example.SWEFinalProject.data.model.SignInRequest
+import com.example.SWEFinalProject.data.model.SignUpRequest
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface CarApiService {
     @GET("api/cars")
@@ -14,18 +17,13 @@ interface CarApiService {
     @GET("cars/{id}")
     suspend fun getCarDetails(@Path("id") id: Int): Car
 
-    @GET("/api/auth/login")
+    @POST("/api/auth/login")
     suspend fun signIn(
-        @Query("username") username: String,
-        @Query("password") password: String
-    ): Response<String>
+        @Body signInRequest: SignInRequest,
+    ): String
 
-    @GET("/api/auth/register")
+    @POST("/api/auth/register")
     suspend fun signUp(
-        @Query("username") username: String,
-        @Query("password") password: String,
-        @Query("phone") phone: String,
-        @Query("firstName") fname: String,
-        @Query("lastName") lname: String,
-    ): Response<String>
+        @Body signUpRequest: SignUpRequest,
+    ): String
 }

@@ -15,6 +15,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
 
@@ -41,6 +42,7 @@ object AppModule {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BaseUrl)
             .client(httpClient)
+            .addConverterFactory(ScalarsConverterFactory.create())  // Add this to handle String responses
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CarApiService::class.java)

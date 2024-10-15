@@ -112,4 +112,5 @@ dependencies {
     // Test
     testImplementation ("com.willowtreeapps.assertk:assertk:0.26.1")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
 }
