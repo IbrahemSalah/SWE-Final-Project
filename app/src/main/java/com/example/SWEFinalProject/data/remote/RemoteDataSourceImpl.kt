@@ -1,6 +1,5 @@
 package com.example.SWEFinalProject.data.remote
 
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -15,10 +14,13 @@ class RemoteDataSourceImpl @Inject constructor(private val remoteAPI: HiringAPI)
         )
 
 
-    override suspend fun signUp(username: String, password: String): Response<String> =
+    override suspend fun signUp(username: String, password: String, phone: String, fname: String, lname: String): Response<String> =
         remoteAPI.signUp(
             username = username,
             password = password,
+            phone = phone,
+            fname = fname,
+            lname = lname,
         )
 
 }

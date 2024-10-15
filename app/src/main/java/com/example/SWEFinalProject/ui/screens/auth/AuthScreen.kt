@@ -29,8 +29,14 @@ fun AuthScreen(
         )
     } else {
         SignUpScreen(
-            onSignUpClick = { email, password ->
-                viewModel.signUp(user = email, password = password)
+            onSignUpClick = { email, phone, fname, lname, password ->
+                viewModel.signUp(
+                    user = email,
+                    password = password,
+                    fname = fname,
+                    lname = lname,
+                    phone = phone
+                )
             },
             onSignInClick = { isSignIn = true }
         )

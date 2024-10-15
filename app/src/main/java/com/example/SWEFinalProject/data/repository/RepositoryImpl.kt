@@ -26,9 +26,9 @@ class RepositoryImpl @Inject constructor(
         }
     }.flowOn(ioDispatcher)
 
-    override fun signUp(username: String, password: String) = flow {
+    override fun signUp(username: String, password: String, phone: String, fname: String, lname: String) = flow {
 
-        val result = remoteDataSource.signUp(username, password)
+        val result = remoteDataSource.signUp(username, password, phone, lname, fname)
 
         if (result.isSuccessful && result.body() != null) {
             emit(result.body()!!)

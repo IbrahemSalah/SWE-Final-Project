@@ -15,6 +15,9 @@ interface HiringAPI {
     @GET("/signup")
     suspend fun signUp(
         @Query("username") username: String,
-        @Query("password") password: String
+        @Query("password") password: String,
+        @Query("phone") phone: String,
+        @Query("firstName") fname: String,
+        @Query("lastName") lname: String,
     ): Response<String>
 }

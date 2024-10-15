@@ -28,12 +28,14 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SignUpScreen(
     modifier: Modifier = Modifier,
-    onSignUpClick: (String, String) -> Unit,
+    onSignUpClick: (String, String, String, String, String) -> Unit,
     onSignInClick: () -> Unit
 ) {
     // State for user inputs
     var email by remember { mutableStateOf("") }
     var phone by remember { mutableStateOf("") }
+    var fname by remember { mutableStateOf("") }
+    var lname by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
     Column(
@@ -65,6 +67,22 @@ fun SignUpScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
+            value = fname,
+            onValueChange = { fname = it },  // Update the password state
+            label = { Text("First Name") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = lname,
+            onValueChange = { lname = it },  // Update the password state
+            label = { Text("Last Name") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
             value = password,
             onValueChange = { password = it },  // Update the password state
             label = { Text("Password") },
@@ -75,7 +93,15 @@ fun SignUpScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { onSignUpClick(email, password) },  // Pass email and password to sign-up logic
+            onClick = {
+                onSignUpClick(
+                    email,
+                    phone,
+                    fname,
+                    lname,
+                    password
+                )
+            },  // Pass email and password to sign-up logic
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Sign Up")
@@ -96,6 +122,6 @@ fun SignUpScreenPreview() {
     SignUpScreen(
         modifier = Modifier.background(Color.White),
         onSignInClick = {},
-        onSignUpClick = { _, _ -> },
+        onSignUpClick = { _, _, _, _, _ -> },
     )
 }

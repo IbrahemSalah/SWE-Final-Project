@@ -30,8 +30,8 @@ class AuthViewModel @Inject constructor(private val repository: Repository) : Vi
             repository.signIn(user, password).asResult().collect { result ->
                 when (result) {
                     is Result.Error -> {
-                       // viewModelState.value = AuthUiState.Error(error = result.exception)
-                        viewModelState.value = AuthUiState.Success
+                        viewModelState.value = AuthUiState.Error(error = result.exception)
+                        //viewModelState.value = AuthUiState.Success
 
                     }
 
@@ -47,17 +47,16 @@ class AuthViewModel @Inject constructor(private val repository: Repository) : Vi
         }
     }
 
-    fun signUp(user: String, password: String) {
+    fun signUp(user: String, password: String, fname: String, lname: String, phone: String) {
 
         viewModelScope.launch {
             viewModelState.value = AuthUiState.Success
 
-            repository.signUp(user, password).asResult().collect { result ->
+            repository.signUp(user, password, phone, fname, lname).asResult().collect { result ->
                 when (result) {
                     is Result.Error -> {
-                      //  viewModelState.value = AuthUiState.Error(error = result.exception)
-                        viewModelState.value = AuthUiState.Success
-
+                        viewModelState.value = AuthUiState.Error(error = result.exception)
+                        //viewModelState.value = AuthUiState.Success
                     }
 
                     Result.Loading -> {

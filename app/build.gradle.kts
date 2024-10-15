@@ -24,7 +24,7 @@ android {
         }
 
 
-        buildConfigField("String", "BaseUrl", "\"https://fetch-hiring.s3.amazonaws.com/\"")
+        buildConfigField("String", "BaseUrl", "\"http://185.143.45.185:2024/\"")
     }
 
     buildFeatures {
