@@ -60,7 +60,6 @@ fun SignUpScreen(
             value = phone,
             onValueChange = { phone = it },  // Update the password state
             label = { Text("Phone Number") },
-            visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
