@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -29,17 +30,6 @@ object AppModule {
             .build()
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideHiringAPI(httpClient: OkHttpClient): HiringAPI {
-//
-//        return Retrofit.Builder()
-//            .baseUrl(BuildConfig.BaseUrl)
-//            .client(httpClient)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(HiringAPI::class.java)
-//    }
     @Provides
     @Singleton
     fun provideCarAPI(httpClient: OkHttpClient): CarApiService {
@@ -52,18 +42,12 @@ object AppModule {
             .create(CarApiService::class.java)
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideRemoteDataSource(remoteAPI: HiringAPI): RemoteDataSource {
-//        return RemoteDataSourceImpl(remoteAPI)
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideRepository(
-//        @Dispatcher(AppDispatchers.IO) ioDispatcher: CoroutineDispatcher,
-//        remoteDataSource: RemoteDataSource
-//    ): Repository {
-//        return RepositoryImpl(remoteDataSource, ioDispatcher)
-//    }
+    @Provides
+    @Singleton
+    fun provideRepository(
+        @Dispatcher(AppDispatchers.IO) ioDispatcher: CoroutineDispatcher,
+        remoteDataSource: RemoteDataSource
+    ): Repository {
+        return RepositoryImpl(remoteDataSource, ioDispatcher)
+    }
 }
